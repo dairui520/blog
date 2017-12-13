@@ -23,6 +23,15 @@ oschina博客爬虫
 ## 2016-12-15新增
 /back/crawler oschina博客爬取
 
+## 2017-12-13新增
+1. 增加了前台页面js特效，和关于我页面
+2. 完善了游客评论注册模块，和头像上传模块
+3. 完善ckedit的文件上传，和代码高亮
+4. 完成了首页的搜索的功能
+5. 添加了邮件报警功能
+6. 修改前台页面的细节问题
+7. 提高SpringBoot的版本，目前是1.5.4.RELEASE，解决了springBoot的版本冲突
+
 ## 说明
 基于TIM前辈的blog开源项目：https://gitee.com/catshen/blog.git 的二次开发<br/>
 1.项目所需jdk8，数据库mysql<br/>
