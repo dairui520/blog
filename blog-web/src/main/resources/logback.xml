@@ -4,11 +4,11 @@
     <property name="smtpHost" value="smtp.qq.com"/>
     <property name="smtpPort" value="25" />
     <!--发送者邮箱名称-->
-    <property name="email_from" value="q1996716@vip.qq.com"/>
+    <property name="email_from" value="****@vip.qq.com"/>
     <!--发送者邮箱-->
-    <property name="username" value="q1996716@vip.qq.com"/>
+    <property name="username" value="****@vip.qq.com"/>
     <!--发送者用户密码-->
-    <property name="password" value="legztdyyegdhbbai"/>
+    <property name="password" value="*****"/>
     <!--接收者邮箱-->
     <property name="email_to" value="dairui20171120@aliyun.com"/>
     <!-- 默认使用false -->
