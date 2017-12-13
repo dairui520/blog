@@ -23,7 +23,7 @@ oschina博客爬虫
 ## 2016-12-15新增
 /back/crawler oschina博客爬取
 
-## 注
+## 说明
 1.项目所需jdk8，数据库mysql<br/>
 2.数据库脚本在项目根目录中，请提前创建数据库blog，执行blog.sql<br/>
 3.由于之前开启了@EnableRedisHttpSession ，没有正确配置redis的会启动报错，因此把这个关闭了，有需要可以在blog-common下的conf包下修改<br/>
