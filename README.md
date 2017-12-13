@@ -1,3 +1,4 @@
+基于TIM前辈的blog开源项目：https://gitee.com/catshen/blog.git 的二次开发<br/>
 基于SpringBoot的博客系统，目前版本是1.5.4.RELEASE，欢迎大家Mark学习
 # blog(博客系统)
   基于spring-boot搭建的博客系统，集成了redis 对 session的管理（可以删除配置，改成web容器管理），使用了Mybatis、CommonMapper、PageHelper对数据进行   操作。博客图片可以通过nginx进行静态资源代理
