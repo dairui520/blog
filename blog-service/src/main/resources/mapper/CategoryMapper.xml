@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jt.blog.mapper.CategoryMapper">
+
+    <select id="getListAndCount" resultType="com.jt.blog.dto.CategoryDto">
+         SELECT
+                c.*, COUNT(c.id) AS blogNum
+            FROM
+                blog b
+            JOIN category c ON c.id = b.category_id
+            GROUP BY
+                b.category_id
+            ORDER BY
+                c.sort_index
+    </select>
+
+</mapper>

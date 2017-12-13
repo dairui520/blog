@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+    <property name="smtpHost" value="smtp.qq.com"/>
+    <property name="smtpPort" value="25" />
+    <!--发送者邮箱名称-->
+    <property name="email_from" value="q1996716@vip.qq.com"/>
+    <!--发送者邮箱-->
+    <property name="username" value="q1996716@vip.qq.com"/>
+    <!--发送者用户密码-->
+    <property name="password" value="legztdyyegdhbbai"/>
+    <!--接收者邮箱-->
+    <property name="email_to" value="dairui20171120@aliyun.com"/>
+    <!-- 默认使用false -->
+    <property name="SSL" value="false" />
+    <!--STARTTLS方式是先使用非加密方式建立连接，然后切换到SSL（常用于server-server交互-->
+    <property name="STARTTLS" value="true" />
+    <!--邮件主题-->
+    <property name="email_subject" value="%data -@logger- 博客邮件报警"/>
+
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logFilePath}/blog.log</file>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${logFilePath}/blog-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder defaults to ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+        <encoder>
+            <pattern>%-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <!-- Only log level INFO and above -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${logLevel}</level>
+        </filter>
+    </appender>
+
+    <appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>${smtpHost}</smtpHost>
+        <smtpPort>${smtpPort}</smtpPort>
+        <username>${username}</username>
+        <password>${password}</password>
+        <STARTTLS>${STARTTLS}</STARTTLS>
+        <to>${email_to}</to>
+        <from>${email_from}</from>
+        <subject>%d{yyyy-MM-dd}</subject>
+        <asynchronousSending>true</asynchronousSending>
+        <!--<layout class="ch.qos.logback.classic.html.HTMLLayout"/>-->
+
+        <!--<layout class="ch.qos.logback.classic.html.HTMLLayout">-->
+            <!--<Pattern>%date%thread%level%logger%mdc%msg</Pattern>-->
+        <!--</layout>-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%date %X{ip}  %-5level %logger{35} - %n%message%n</pattern>
+        </layout>
+        <cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+            <!-- 每个电子邮件只发送一个日志条目 -->
+            <bufferSize>1</bufferSize>
+        </cyclicBufferTracker>
+        　 <!-- 这里采用等级过滤器 指定等级相符才发送 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+    </appender>
+
+    <!-- Strictly speaking, the level attribute is not necessary since -->
+    <!-- the level of the root level is set to DEBUG by default.       -->
+    <root level="${logLevel}">
+        <appender-ref ref="${logDefaultFile}"/>
+        <appender-ref ref="EMAIL"/>
+    </root>
+
+</configuration>

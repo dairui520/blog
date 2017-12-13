@@ -1,0 +1,5 @@
+.closep:hover {
+    font-size: 20px;
+    transition: 0.8s;
+    color:  rgba(34, 174, 245,1)!important; /*必须加！improtant 来提高优先级*/
+}

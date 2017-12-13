@@ -1,0 +1,50 @@
+server:
+  port: ${port}
+  session:
+    timeout: 3600
+spring:
+  resources:
+    chain:
+      cache: ${resource.cache}
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  freemarker:
+    cache: ${freemaker.cache}  #关闭缓存
+    request-context-attribute: request  #用于在freemaker中用request名字获取上下文request对象
+  redis:
+    host: ${redis.host}
+    password : ${redis.password}
+    port: 6379
+    pool:
+      max-idle: 1
+      min-idle: 0
+      max-active: 2
+      max-wait: 1
+  datasource:
+    name: ${datasource.name}
+    type: ${datasource.type}
+    driver-class-name: ${datasource.driver}
+    url: ${datasource.url}
+    username: ${datasource.username}
+    password: ${datasource.password}
+    druid:
+      initial-size: ${datasource.initialSize}
+      max-active: ${datasource.maxActive}
+      min-idle: ${datasource.minIdle}
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: select 'x'
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      max-wait: 60000
+multipart:
+  max-file-size: 10Mb
+
+# 配置普通文件上传路径
+upload-file-path:
+    ${upload-file-path}
+
+# 配置博客图片上传路径
+upload-blogFile-path: ${upload-blogFile-path}

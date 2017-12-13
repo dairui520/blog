@@ -1,0 +1,6 @@
+https://my.oschina.net/taoluoluo/blog
+https://my.oschina.net/taoluoluo/blog/[0-9]+
+div[class='title']
+div[class='blog-abstract']
+div[class='BlogContent']
+span[class='tag']>a

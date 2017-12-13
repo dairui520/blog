@@ -1,0 +1,68 @@
+
+html {
+    height: 100%;
+    background-image: -webkit-radial-gradient(ellipse farthest-corner at center top, #000d4d 0%, #000105 100%);
+    background-image: radial-gradient(ellipse farthest-corner at center top, #000d4d 0%, #000105 100%);
+    /*background: #315f80;*/
+    cursor: auto;
+
+}
+
+body {
+    background-image: -webkit-radial-gradient(ellipse farthest-corner at center top, #000d4d 0%, #000105 100%);
+    background-image: radial-gradient(ellipse farthest-corner at center top, #000d4d 0%, #000105 100%);
+    /*background: transparent;*/
+    width: 100%;
+    margin: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+object, embed {
+    -webkit-animation-duration: .001s;
+    -webkit-animation-name: playerInserted;
+    -ms-animation-duration: .001s;
+    -ms-animation-name: playerInserted;
+    -o-animation-duration: .001s;
+    -o-animation-name: playerInserted;
+    animation-duration: .001s;
+    animation-name: playerInserted;
+}
+
+@-webkit-keyframes playerInserted {
+    from {
+        opacity: 0.99;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes playerInserted {
+    from {
+        opacity: 0.99;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes playerInserted {
+    from {
+        opacity: 0.99;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes playerInserted {
+    from {
+        opacity: 0.99;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

@@ -1,0 +1,84 @@
+/*!
+ * Start Bootstrap - Blog Home (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+    /*font-size: 12px;*/
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.h2, h2 {
+    font-size: 18px;
+}
+
+.h4, h4 {
+    font-size: 14px;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+footer {
+    margin: 25px 0;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    cursor: pointer;
+    text-decoration: none;
+}
+.blog-title{
+    font-size:16px;
+    margin-bottom: 10px;
+
+}
+.blog-statistics{
+    margin-bottom: 10px;
+}
+.blog-subject{
+    font-style: italic;
+    margin-bottom: 10px;
+}
+.blog-subject span {
+    font-size: 14px;
+    margin-right: 10px;
+}
+.blog-content{
+    overflow-x: auto;
+}
+.comment-history{
+    margin : 10px 0;
+    padding : 10px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.comment-console{
+    margin-top: 20px;
+}
+.pager li a{
+    border: 0px;
+    border-radius: 0px;
+}
+.load{
+    position: absolute;
+    left: 40%;
+    top: 100px;
+    z-index: 99;
+    font-size: 15px;
+    display: none;
+}
+.r-menu-item{
+    padding: 5px;
+    margin: 10px 0;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jt.blog.mapper.CommentMapper">
+    <select id="getByBlogId" resultType="com.jt.blog.dto.CommentDto">
+      SELECT t.id ,t.comment ,t.createTime ,t.blogId ,t.pid ,t.level ,t.type ,t.status,
+      t.replyerId ,t.replyerName ,t.replyerHome ,t.replyerEmail,t.replyerHead,
+      u2.id AS receiverId,u2.name AS receiverName,u2.home_url AS receiverHome,u2.email AS receiverEmail,u2.head AS receiverHead FROM
+      (SELECT c.id ,c.comment ,c.create_time AS createTime ,c.blog_id AS blogId ,c.pid ,c.level ,c.type ,c.status,
+      u1.id AS replyerId,u1.name AS replyerName,u1.home_url AS replyerHome,u1.email AS replyerEmail ,u1.head AS replyerHead,c.receiver_id
+       FROM comment c LEFT JOIN user u1 ON c.replyer_id = u1.id WHERE c.blog_id = #{blogId}) t LEFT JOIN user u2 ON t.receiver_id = u2.id
+    </select>
+</mapper>

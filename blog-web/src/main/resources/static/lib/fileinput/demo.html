@@ -1,0 +1,124 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<html lang="en">
+<head>
+     <meta charset="UTF-8"/>
+        <title>Krajee JQuery Plugins - &copy; Kartik</title>
+        <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/default.css">
+        <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+        <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+        <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+        <script src="js/fileinput.js" type="text/javascript"></script>
+        <!--简体中文-->
+        <script src="js/locales/zh.js" type="text/javascript"></script>
+        <!--繁体中文-->
+        <script src="js/locales/zh-TW.js" type="text/javascript"></script>
+        <script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="/js/contentManage/bootstrap/bootstrap.min.js"></script>
+</head>
+<script>
+
+    $(function () {
+        //0.初始化fileinput
+        var oFileInput = new FileInput();
+        oFileInput.Init("image", "/admin/contentManage/CarouselFigure.do");
+    });
+
+    //初始化fileinput
+    var FileInput = function () {
+        var oFile = new Object();
+        //初始化fileinput控件（第一次初始化）
+        oFile.Init = function (ctrlName, uploadUrl) {
+            var control = $('#' + ctrlName);
+            //初始化上传控件的样式
+            control.fileinput({
+                language: 'zh', //设置语言
+                uploadUrl: uploadUrl, //上传的地址
+                allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+                showUpload: true, //是否显示上传按钮
+                showCaption: false,//是否显示标题
+                browseClass: "btn btn-primary", //按钮样式
+                dropZoneEnabled: true,//是否显示拖拽区域
+                //minImageWidth: 50, //图片的最小宽度
+                //minImageHeight: 50,//图片的最小高度
+                //maxImageWidth: 1000,//图片的最大宽度
+                //maxImageHeight: 1000,//图片的最大高度
+                //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
+                //minFileCount: 0,
+                maxFileCount: 1, //表示允许同时上传的最大文件个数
+                enctype: 'multipart/form-data',
+                validateInitialCount: true,
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+            });
+                //导入文件上传完成之后的事件
+            $("#image").on("fileuploaded", function (event, data, previewId, index) {
+                alert("试试")
+                $("#myModal").modal("hide");
+                var data = data.response.lstOrderImport;
+                if (data == undefined) {
+                    toastr.error('文件格式类型不正确');
+                    return;
+                }
+                //1.初始化表格
+                var oTable = new TableInit();
+                oTable.Init(data);
+                $("#div_startimport").show();
+            });
+        }
+        return oFile;
+    };
+</script>
+<body>
+
+<div class="container kv-main">
+<form enctype="multipart/form-data" action="/admin/contentManage/upload.do" method="post">
+    <input id="image1" class="file" type="file" name="file">
+    <input type="submit" class="btn btn-primary"></input>
+    <button type="reset" class="btn btn-default">重置</button>
+</form>
+<script>
+    $("#image1").fileinput({
+        language: 'zh', //设置语言
+        showUpload:true,
+        allowedFileExtensions : ['jpg', 'png','gif'],
+        uploadUrl: '/admin/contentManage/upload.do',
+        minFileCount:2,
+        validateInitialCount:true,
+        overwriteInitial:false,
+        dropZoneEnabled: false
+    });
+//    异步上传返回结果处理
+//     $("#image1").on("fileuploaded", function (event, data, previewId, index) {
+//         alert(data);
+//         /*console.log(data.id);
+//         console.log(data.index);
+//         console.log(data.file);
+//         console.log(data.reader);
+//         console.log(data.files);
+//         var obj = data.response;*/
+//         /*alert(JSON.stringify(data.success));*/
+//     });
+</script>
+    <%--<input type="file" name="txt_file" id="image" multiple class="file-loading" />--%>
+</div>
+</body>
+</html>
+<%--
+//初始化fileinput控件（第一次初始化）
+/*   function initFileInput(ctrlName, uploadUrl) {
+var control = $('#' + ctrlName);
+control.fileinput({
+language: 'zh', //设置语言
+uploadUrl: uploadUrl, //上传的地址
+allowedFileExtensions: ['jpg', 'png', 'gif'],//接收的文件后缀
+showUpload: false, //是否显示上传按钮
+showCaption: false,//是否显示标题
+browseClass: "btn btn-primary", //按钮样式
+previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+});
+}
+$(function () {
+//初始化fileinput控件（第一次初始化）
+initFileInput("image", "/admin/contentManage/index.do");
+})*/--%>
